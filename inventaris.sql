@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 27 Jul 2024 pada 15.31
+-- Waktu pembuatan: 28 Jul 2024 pada 15.57
 -- Versi server: 10.4.32-MariaDB
 -- Versi PHP: 8.2.12
 
@@ -35,10 +35,6 @@ CREATE TABLE `barang` (
   `lantai_id` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
---
--- Dumping data untuk tabel `barang`
---
-
 -- --------------------------------------------------------
 
 --
@@ -49,16 +45,6 @@ CREATE TABLE `lantai` (
   `id` int(11) NOT NULL,
   `nomor_lantai` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data untuk tabel `lantai`
---
-
-INSERT INTO `lantai` (`id`, `nomor_lantai`) VALUES
-(1, 1),
-(2, 2),
-(3, 3),
-(4, 4);
 
 -- --------------------------------------------------------
 
@@ -72,9 +58,18 @@ CREATE TABLE `ruangan` (
   `lantai_id` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+-- --------------------------------------------------------
+
 --
--- Dumping data untuk tabel `ruangan`
+-- Struktur dari tabel `users`
 --
+
+CREATE TABLE `users` (
+  `id` int(11) NOT NULL,
+  `username` varchar(50) NOT NULL,
+  `password` varchar(255) NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Indexes for dumped tables
@@ -102,12 +97,39 @@ ALTER TABLE `ruangan`
   ADD KEY `lantai_id` (`lantai_id`);
 
 --
+-- Indeks untuk tabel `users`
+--
+ALTER TABLE `users`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `username` (`username`);
+
+--
 -- AUTO_INCREMENT untuk tabel yang dibuang
 --
 
 --
 -- AUTO_INCREMENT untuk tabel `barang`
 --
+ALTER TABLE `barang`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT untuk tabel `lantai`
+--
+ALTER TABLE `lantai`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT untuk tabel `ruangan`
+--
+ALTER TABLE `ruangan`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT untuk tabel `users`
+--
+ALTER TABLE `users`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)
