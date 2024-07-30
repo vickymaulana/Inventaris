@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 28 Jul 2024 pada 15.57
+-- Waktu pembuatan: 29 Jul 2024 pada 09.49
 -- Versi server: 10.4.32-MariaDB
 -- Versi PHP: 8.2.12
 
@@ -32,7 +32,15 @@ CREATE TABLE `barang` (
   `nama_barang` varchar(255) NOT NULL,
   `jumlah_barang` int(11) NOT NULL,
   `ruangan_id` int(11) DEFAULT NULL,
-  `lantai_id` int(11) DEFAULT NULL
+  `lantai_id` int(11) DEFAULT NULL,
+  `kode_barang` varchar(50) DEFAULT NULL,
+  `kategori` varchar(255) DEFAULT NULL,
+  `merk_type` varchar(255) DEFAULT NULL,
+  `bahan` varchar(255) NOT NULL,
+  `tahun_pembelian` int(4) DEFAULT NULL,
+  `kondisi` varchar(50) NOT NULL,
+  `harga` decimal(10,2) DEFAULT NULL,
+  `keterangan` text DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
