@@ -42,6 +42,13 @@ class PDF extends FPDF
 
         $fill = false;
         foreach ($data as $row) {
+            if ($this->GetY() > 180) {
+                $this->AddPage();
+                for ($i = 0; $i < count($header); $i++) {
+                    $this->Cell($w[$i], 7, $header[$i], 1, 0, 'C', true);
+                }
+                $this->Ln();
+            }
             $this->Cell($w[0], 6, $row['no'], 'LR', 0, 'C', $fill);
             $this->Cell($w[1], 6, $row['nama_barang'], 'LR', 0, 'L', $fill);  // Display full text
             $this->Cell($w[2], 6, $row['kode_barang'], 'LR', 0, 'C', $fill);
@@ -99,6 +106,15 @@ foreach ($data as $lantai => $rooms) {
     $pdf->AddPage();  // Add new page for each floor
     $pdf->ChapterTitle('Lantai ' . $lantai);
     foreach ($rooms as $roomName => $items) {
+        // Periksa apakah ruang yang tersisa cukup untuk menampilkan ruangan baru
+        $roomNameHeight = 10;
+        $tableHeaderHeight = 10;
+        $tableRowsHeight = count($items) * 6;
+
+        if ($pdf->GetY() + $roomNameHeight + $tableHeaderHeight + $tableRowsHeight > $pdf->GetPageHeight() - 20) {
+            $pdf->AddPage();
+        }
+
         $no = 1;  // Reset number for each room
         foreach ($items as &$item) {
             $item['no'] = $no++;
