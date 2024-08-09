@@ -12,6 +12,7 @@ $barang_result = $conn->query("SELECT * FROM barang WHERE ruangan_id = $ruangan_
     <h1 class="text-3xl font-bold mb-6 text-center">Daftar Barang di Ruangan <?php echo $ruangan['nama_ruangan']; ?></h1>
     <a href="tambah_barang.php?ruangan_id=<?php echo $ruangan_id; ?>" class="mb-4 inline-block px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 transition">Tambah Barang</a>
     <a href="export_pdf_per_ruangan.php?ruangan_id=<?php echo $ruangan_id; ?>" class="mb-4 ml-2 inline-block px-4 py-2 bg-green-500 text-white rounded hover:bg-green-600 transition">Export PDF</a>
+    <a href="export_excel_per_ruangan.php?ruangan_id=<?php echo $ruangan_id; ?>" class="mb-4 ml-2 inline-block px-4 py-2 bg-yellow-500 text-white rounded hover:bg-yellow-600 transition">Export Excel</a>
     <table class="min-w-full bg-white shadow-md rounded-lg overflow-hidden">
         <thead>
             <tr>

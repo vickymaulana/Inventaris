@@ -23,6 +23,7 @@ $lantai_result = $conn->query("SELECT * FROM lantai");
     <div class="flex justify-end mb-4">
         <!-- <a href="export_excel.php" class="px-4 py-2 bg-green-500 text-white rounded hover:bg-green-600 transition mr-2">Export ke Excel</a> -->
         <a href="export_pdf.php" class="px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600 transition">Export ke PDF</a>
+        <a href="export_excel.php" class="px-4 py-2 bg-green-500 text-white rounded hover:bg-green-600 transition mr-2">Export ke Excel</a>
     </div>
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
         <?php while ($lantai = $lantai_result->fetch_assoc()): ?>
